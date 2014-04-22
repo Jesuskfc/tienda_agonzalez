@@ -22,6 +22,14 @@ import javax.servlet.http.HttpSession;
 @WebServlet(name = "SrvMostrarSesion", urlPatterns = {"/SrvMostrarSesion"})
 public class SrvMostrarSesion extends HttpServlet {
 
+    public static String cadena;
+
+    public static String getCadena() {
+        return cadena;
+    }
+    
+    
+    
     /**
      * Processes requests for both HTTP
      * <code>GET</code> and
@@ -77,7 +85,7 @@ public class SrvMostrarSesion extends HttpServlet {
             
             response.setContentType("text/html");
             
-            String cadena = "";
+            cadena = "";
             
             for(CantidadProducto p: cesta){
                 

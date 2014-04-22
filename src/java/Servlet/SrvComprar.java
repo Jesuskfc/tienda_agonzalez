@@ -109,7 +109,7 @@ public class SrvComprar extends HttpServlet {
             out.println("<br>");
             
             
-            out.println("<form method=\"post\" action=\"SrvMostrarSesion\">");
+            out.println("<form method=\"post\" action=\"vercesta.jsp\">");
             out.println("<td><input type=\"submit\" value=\"Ver Cesta\"></td>");
             out.println("</form>");
             
