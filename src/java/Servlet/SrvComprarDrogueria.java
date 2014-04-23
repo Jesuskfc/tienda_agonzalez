@@ -165,6 +165,26 @@ public class SrvComprarDrogueria extends HttpServlet {
             
             
             out.println("</table>");
+            
+            out.println("<br>");
+            out.println("<br>");
+            out.println("<br>");
+            
+            out.println("<form method=\"post\" action=\"SrvMostrarSesion\">");
+            out.println("<td><input type=\"submit\" value=\"Ver Cesta\"></td>");
+            out.println("</form>");
+            
+            
+            
+            out.println("<br>");
+            out.println("<br>");
+            out.println("<br>");
+
+            
+            out.println("<form method=\"post\" action=\"index.jsp\">");
+            out.println("<td><input type=\"submit\" value=\"Home\"></td>");
+            out.println("</form>");
+            
             out.println("</body>");
             out.println("</html>");
         } catch (Exception e) {

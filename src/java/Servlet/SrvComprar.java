@@ -78,11 +78,7 @@ public class SrvComprar extends HttpServlet {
             out.println("</head>");
             out.println("<body>");
             out.println("<p>Estas comprando</p>");
-            out.println("<div align=\"right\">\n" +
-                "            <table float-left>\n" +
-                "                <tr>Pedido</tr>\n" +
-                "            </table>\n" +
-            "            </div>");
+            
             out.println("<table>");
             out.println("<tr>");
             out.println("<form method=\"post\" action=\"SrvComprarAlimentacion\">");
@@ -108,9 +104,19 @@ public class SrvComprar extends HttpServlet {
             out.println("<br>");
             out.println("<br>");
             
-            
-            out.println("<form method=\"post\" action=\"vercesta.jsp\">");
+            out.println("<form method=\"post\" action=\"SrvMostrarSesion\">");
             out.println("<td><input type=\"submit\" value=\"Ver Cesta\"></td>");
+            out.println("</form>");
+            
+            
+            
+            out.println("<br>");
+            out.println("<br>");
+            out.println("<br>");
+
+            
+            out.println("<form method=\"post\" action=\"index.jsp\">");
+            out.println("<td><input type=\"submit\" value=\"Home\"></td>");
             out.println("</form>");
             
             out.println("</body>");

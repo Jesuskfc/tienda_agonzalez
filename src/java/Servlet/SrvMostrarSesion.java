@@ -99,23 +99,23 @@ public class SrvMostrarSesion extends HttpServlet {
                 cadena = cadena + " . ";
                 
             }
-             
             
-//            /* TODO output your page here. You may use following sample code. */
-//            out.println("<!DOCTYPE html>");
-//            out.println("<html>");
-//            out.println("<head>");
-//            out.println("<title>Servlet SrvMostrarSesion</title>");            
-//            out.println("</head>");
-//            out.println("<body>");
-//            out.println("<h1> " + cadena + " </h1>");
-//            out.println("<form method=\"post\" action=\"SrvComprar\">");
-//            out.println("<td><input type=\"submit\" value=\"Atrás\"></td>");
-//            out.println("</form>");
-//            out.println("</body>");
-//            out.println("</html>");
-        } finally {            
-            out.close();
+            
+            /* TODO output your page here. You may use following sample code. */
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet SrvMostrarSesion</title>");            
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1> " + cadena + " </h1>");
+            out.println("<form method=\"post\" action=\"SrvComprar\">");
+            out.println("<td><input type=\"submit\" value=\"Atrás\"></td>");
+            out.println("</form>");
+            out.println("</body>");
+            out.println("</html>");
+        } catch(Exception ex) {            
+            out.println("<h1>La cesta esta vacia</h1>");
         }
     }
 
