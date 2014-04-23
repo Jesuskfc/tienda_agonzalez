@@ -39,7 +39,7 @@
         <form method="post" action="SrvComprar">
         <table>
             <tr>
-                <td><input type="submit" value="COMPRAR"></td>
+                <td><input type="submit" value="Comprar"></td>
             </tr>
         </table>
         </form>    
