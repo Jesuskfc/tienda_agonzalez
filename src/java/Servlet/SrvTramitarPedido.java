@@ -86,24 +86,24 @@ public class SrvTramitarPedido extends HttpServlet {
         
         try {
             
-//            HttpSession sesion = request.getSession();
-//            
-//            
-//            ArrayList<CantidadProducto> cesta = (ArrayList<CantidadProducto>) sesion.getAttribute("cesta");
-//            
-//            response.setContentType("text/html");
+            HttpSession sesion = request.getSession();
+            
+            
+            ArrayList<CantidadProducto> cesta = (ArrayList<CantidadProducto>) sesion.getAttribute("cesta");
             
             
             
-//            for(CantidadProducto p: cesta){
-//                
-//                cest = cest + "El producto es :  ";
-//                cest = cest +p.getIdProducto();
-//                cest = cest + " y esta es la cantidad :  ";
-//                cest = cest +p.getCantidad();
-//                cest = cest + " . ";
-//                
-//            }
+            String cest = "";
+            
+            for(CantidadProducto p: cesta){
+                
+                cest = cest + "El producto es :  ";
+                cest = cest +p.getIdProducto();
+                cest = cest + " y esta es la cantidad :  ";
+                cest = cest +p.getCantidad();
+                cest = cest + " . ";
+                
+            }
             
             
             
@@ -135,7 +135,11 @@ public class SrvTramitarPedido extends HttpServlet {
             int idProducto = Integer.parseInt(request.getParameter("idProducto"));
             String nombre= request.getParameter("nombre");
             String fecha_alta = request.getParameter("fecha_alta");
-            String cest="";
+            
+            
+            
+         
+            
             ResultSet res;
             
             

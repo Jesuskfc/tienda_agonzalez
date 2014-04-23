@@ -26,7 +26,7 @@ public class AddPedido extends Conexion{
     public void AgregarMDB(int idProducto,String nombre, String fecha_alta, String cesta) throws Exception{
 
         try{
-            int entregado = 1;
+            int entregado = 0;
             getStmt();//estado de la comunicacion
             stmt.executeUpdate("INSERT INTO pedidos VALUES ('"+idProducto +"','"+nombre+"','"+entregado+"','"+fecha_alta+"','2000-12-12','"+cesta+"')" );//consulta a la bd
         }catch (SQLException ex){
