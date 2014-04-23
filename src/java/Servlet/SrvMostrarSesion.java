@@ -7,6 +7,7 @@ package Servlet;
 import Productos.CantidadProducto;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.ResultSet;
 import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -101,6 +102,11 @@ public class SrvMostrarSesion extends HttpServlet {
             }
             
             
+            
+            
+            
+            
+            
             /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
             out.println("<html>");
@@ -112,6 +118,19 @@ public class SrvMostrarSesion extends HttpServlet {
             out.println("<form method=\"post\" action=\"SrvComprar\">");
             out.println("<td><input type=\"submit\" value=\"Atrás\"></td>");
             out.println("</form>");
+            
+            
+            out.println("<br>");
+            out.println("<br>");
+            out.println("<br>");
+            
+            
+            
+            out.println("<form method=\"post\" action=\"SrvTramitarPedido\">");
+            out.println("<td><input type=\"submit\" value=\"Pedir Aquí\"></td>");
+            out.println("</form>");
+            
+            
             out.println("</body>");
             out.println("</html>");
         } catch(Exception ex) {            

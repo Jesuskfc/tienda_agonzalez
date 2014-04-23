@@ -93,7 +93,7 @@ public class SrvRegistrarProducto extends HttpServlet {
             out.println("</form>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<form action = >");
+            //out.println("<form action = >");
             
                         
             out.println("<p>Usuario añadido correctamente</p>");
