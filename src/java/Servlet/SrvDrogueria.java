@@ -171,7 +171,7 @@ public class SrvDrogueria extends HttpServlet {
                 out.println("</form>");
                 
                 out.println("<form method=\"post\" action=\"SrvEliminarProducto\">");
-                out.println("<td><input type=\"text\" name=\"idProducto\""
+                out.println("<td><input type=\"hidden\" name=\"idProducto\""
                         + " value=" + idProducto+"></td>");
                 out.println("<td><input type=\"submit\" value=\"Eliminar\"></td>");
                 out.println("</form>");
@@ -187,8 +187,8 @@ public class SrvDrogueria extends HttpServlet {
 
             out.println("<td><input type=\"text\" name=\"idProducto\""
                     + " value=></td>");
-            out.println("<td><input type=\"text\" name=\"idFamilia\""
-                    + " value=></td>");
+            out.println("<td>2</td>");
+            out.println("<input type=\"hidden\" name=\"idProducto\" value='2'>");
             out.println("<td><input type=\"text\" name=\"nombre\""
                     + " value=></td>");
             out.println("<td><input type=\"text\" name=\"descripcion\""
@@ -207,6 +207,15 @@ public class SrvDrogueria extends HttpServlet {
             out.println("</form>");
             
             out.println("</table>");
+            
+            
+            out.println("<br>");
+            out.println("<br>");
+            out.println("<br>");
+            out.println("<form method=\"post\" action=\"index.jsp\">");
+            out.println("<td><input type=\"submit\" value=\"Home\"></td>");
+            out.println("</form>");
+            
             out.println("</body>");
             out.println("</html>");
         } catch (Exception e) {

@@ -98,6 +98,15 @@ public class SrvAdmin extends HttpServlet {
             
             out.println("</tr>");
             out.println("</table>");
+            
+            out.println("<br>");
+            out.println("<br>");
+            out.println("<br>");
+            out.println("<form method=\"post\" action=\"index.jsp\">");
+            out.println("<td><input type=\"submit\" value=\"Home\"></td>");
+            out.println("</form>");
+            
+            
             out.println("</body>");
             out.println("</html>");
         } catch (Exception e) {

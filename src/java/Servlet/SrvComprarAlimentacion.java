@@ -98,11 +98,7 @@ public class SrvComprarAlimentacion extends HttpServlet {
             out.println("</head>");
             out.println("<body>");
             out.println("<p>Estas comprando</p>");
-            out.println("<div align=\"right\">\n" +
-                "            <table float-left>\n" +
-                "                <tr>Pedido</tr>\n" +
-                "            </table>\n" +
-            "            </div>");
+            
             out.println("<table>");
             out.println("<tr>");
             out.println("<form method=\"post\" action=\"SrvComprarAlimentacion\">");
