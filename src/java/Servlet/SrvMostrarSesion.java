@@ -22,11 +22,14 @@ import javax.servlet.http.HttpSession;
 @WebServlet(name = "SrvMostrarSesion", urlPatterns = {"/SrvMostrarSesion"})
 public class SrvMostrarSesion extends HttpServlet {
 
-    public static String cadena;
+    public String cadena;
 
-    public static String getCadena() {
+    public String getCadena() {
         return cadena;
     }
+
+    
+    
     
     
     
@@ -98,19 +101,19 @@ public class SrvMostrarSesion extends HttpServlet {
             }
              
             
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet SrvMostrarSesion</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1> " + cadena + " </h1>");
-            out.println("<form method=\"post\" action=\"SrvComprar\">");
-            out.println("<td><input type=\"submit\" value=\"Atrás\"></td>");
-            out.println("</form>");
-            out.println("</body>");
-            out.println("</html>");
+//            /* TODO output your page here. You may use following sample code. */
+//            out.println("<!DOCTYPE html>");
+//            out.println("<html>");
+//            out.println("<head>");
+//            out.println("<title>Servlet SrvMostrarSesion</title>");            
+//            out.println("</head>");
+//            out.println("<body>");
+//            out.println("<h1> " + cadena + " </h1>");
+//            out.println("<form method=\"post\" action=\"SrvComprar\">");
+//            out.println("<td><input type=\"submit\" value=\"Atrás\"></td>");
+//            out.println("</form>");
+//            out.println("</body>");
+//            out.println("</html>");
         } finally {            
             out.close();
         }

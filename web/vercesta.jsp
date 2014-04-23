@@ -17,6 +17,12 @@
         
             
 
-        <%=SrvMostrarSesion.getCadena()%>
+        <% SrvMostrarSesion cesta = new SrvMostrarSesion();
+        
+            String cadena = cesta.getCadena();
+        %>
+        
+        <%=cadena%>
+
     </body>
 </html>
