@@ -13,6 +13,8 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -95,15 +97,28 @@ public class SrvTramitarPedido extends HttpServlet {
             
             String cest = "";
             
+            float preciototal = 0;
+            
+            float precioproducto=0;
+            
             for(CantidadProducto p: cesta){
                 
                 cest = cest + "El producto es :  ";
                 cest = cest +p.getIdProducto();
                 cest = cest + " y esta es la cantidad :  ";
                 cest = cest +p.getCantidad();
+                cest = cest + " y esta es el precio :  ";
+                precioproducto = p.getPrecio()*p.getCantidad();
+                cest = cest + precioproducto;
                 cest = cest + " . ";
                 
+                
+                preciototal = preciototal + precioproducto;
+                
             }
+            
+            
+            cest = cest + " El precio total del pedido es : " + preciototal;
             
             
             
@@ -119,11 +134,20 @@ public class SrvTramitarPedido extends HttpServlet {
             out.println("<td>Nombre</td>");
             out.println("<td>Fecha Actual</td>");
             
+            Calendar c = Calendar.getInstance();
+            
+            String dia = Integer.toString(c.get(Calendar.DATE));
+            String mes = Integer.toString(c.get(Calendar.MONTH));
+            String annio = Integer.toString(c.get(Calendar.YEAR));
+            
+            
+            String fecha = annio+"-"+mes+"-"+dia;
+            
             
             out.println("<form method=\"post\" action=\"SrvTramitarPedido\">");
             out.println("<td><input type=\"text\" name=\"idProducto\"></td>");
             out.println("<td><input type=\"text\" name=\"nombre\"></td>");
-            out.println("<td><input type=\"text\" name=\"fecha_alta\"></td>");
+            out.println("<td><input type=\"text\" name=\"fecha_alta\" value='"+fecha+"'></td>");
             out.println("<td><input type=\"submit\" value=\"Tramitar Pedido\"></td>");
             out.println("</form>");
             

@@ -13,13 +13,23 @@ package Productos;
 public class CantidadProducto {
     public int idProducto;
     public int cantidad;
+    public float precio;
 
-    public CantidadProducto(int idProducto, int cantidad) {
+    public CantidadProducto(int idProducto, int cantidad,float precio) {
         this.idProducto = idProducto;
         this.cantidad = cantidad;
+        this.precio = precio;
     }
 
     public CantidadProducto() {
+    }
+
+    public float getPrecio() {
+        return precio;
+    }
+
+    public void setPrecio(float precio) {
+        this.precio = precio;
     }
 
     

@@ -151,6 +151,7 @@ public class SrvComprarAlimentacion extends HttpServlet {
                 out.println("<form method=\"post\" action=\"SrvRecogerDatos\">");
                 out.println("<td>"+ idProducto +"</td>");
                 out.println("<input type=\"hidden\" name=\"idProducto\" value=\""+idProducto+"\">");
+                out.println("<input type=\"hidden\" name=\"precio\" value=\""+precio+"\">");
                 out.println("<td>"+ idFamilia +"</td>");
                 out.println("<td>"+ nombre +"</td>");
                 out.println("<td>"+ descripcion +"</td>");

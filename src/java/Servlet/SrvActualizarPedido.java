@@ -6,11 +6,11 @@
 
 package Servlet;
 
+import AccesoDatos.ActualizarPedido;
+import AccesoDatos.ActualizarProducto;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.ResultSet;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -21,8 +21,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author jesuskfc
  */
-@WebServlet(name = "SrvAdmin", urlPatterns = {"/SrvAdmin"})
-public class SrvAdmin extends HttpServlet {
+@WebServlet(name = "SrvActualizarPedido", urlPatterns = {"/SrvActualizarPedido"})
+public class SrvActualizarPedido extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -68,53 +68,34 @@ public class SrvAdmin extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         try {
+                       
+            ResultSet res;                                  
+            int idPedido = Integer.parseInt(request.getParameter("idPedido"));
+            String nombre= request.getParameter("nombre");
+            String descripcion= request.getParameter("descripcion");
+            String fecha_pedido = request.getParameter("fecha_pedido");
             
             
+            
+            ActualizarPedido pedido = new ActualizarPedido();
+
+            pedido.ActualizarMDB(idPedido,nombre,fecha_pedido,descripcion);
             /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>SrvAdmin</title>");            
+            out.println("<title>Servlet SrvActualizar</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<p>Estas en la sección de administrador</p>");
-            out.println("<table>");
-            out.println("<tr>");
-            out.println("<form method=\"post\" action=\"SrvAlimentacion\">");
-            out.println("<td><input type=\"submit\" value=\"Alimentación\"></td>");
-            out.println("</form>");
-            
-            out.println("<form method=\"post\" action=\"SrvDrogueria\">");
-            out.println("<td><input type=\"submit\" value=\"Droguería\"></td>");
-            out.println("</form>");
-            
-            out.println("<form method=\"post\" action=\"SrvPrensa\">");
-            out.println("<td><input type=\"submit\" value=\"Prensa\"></td>");
-            out.println("</form>");
-            
-            out.println("<form method=\"post\" action=\"SrvFerreteria\">");
-            out.println("<td><input type=\"submit\" value=\"Ferretería\"></td>");
-            out.println("</form>");
-            
+            //out.println("<p>"+idProducto+ idFamilia+ nombre+ "</p>");
+            out.println("<h1>PEDIDO HECHO</h1>");
             out.println("<form method=\"post\" action=\"SrvPedidos\">");
-            out.println("<td><input type=\"submit\" value=\"Pedidos\"></td>");
+            out.println("<td><input type=\"submit\" value=\"Atrás\"></td>");
             out.println("</form>");
-            
-            out.println("</tr>");
-            out.println("</table>");
-            
-            out.println("<br>");
-            out.println("<br>");
-            out.println("<br>");
-            out.println("<form method=\"post\" action=\"index.jsp\">");
-            out.println("<td><input type=\"submit\" value=\"Home\"></td>");
-            out.println("</form>");
-            
-            
             out.println("</body>");
             out.println("</html>");
         } catch (Exception e) {
-//            Logger.getLogger(SrvEmpleados.class.getName()).log(Level.SEVERE, null, e);
+           // Logger.getLogger(SrvEmpleados.class.getName()).log(Level.SEVERE, null, e);
         }
     }
 

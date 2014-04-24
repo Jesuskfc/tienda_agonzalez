@@ -79,7 +79,7 @@ public class SrvActualizarProducto extends HttpServlet {
             String nombre= request.getParameter("nombre");
             String descripcion= request.getParameter("descripcion");
             //float precio=(float)Integer.parseInt(request.getParameter("precio"));
-            float precio=1;
+            float precio= Float.parseFloat(request.getParameter("precio"));
             int stock = Integer.parseInt(request.getParameter("stock"));
             String fecha_alta = request.getParameter("fecha_alta");
             String imagen = request.getParameter("imagen");

@@ -10,6 +10,7 @@ import AccesoDatos.AccesoProductos;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.ResultSet;
+import java.util.Calendar;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -115,6 +116,11 @@ public class SrvFerreteria extends HttpServlet {
             out.println("<td><input type=\"submit\" value=\"Ferretería\"></td>");
             out.println("</form>");
             
+            
+            out.println("<form method=\"post\" action=\"SrvPedidos\">");
+            out.println("<td><input type=\"submit\" value=\"Pedidos\"></td>");
+            out.println("</form>");
+            
             out.println("</tr>");
             out.println("</table>");
             
@@ -182,6 +188,16 @@ public class SrvFerreteria extends HttpServlet {
 
             }
             
+            
+            Calendar c = Calendar.getInstance();
+            
+            String dia = Integer.toString(c.get(Calendar.DATE));
+            String mes = Integer.toString(c.get(Calendar.MONTH));
+            String annio = Integer.toString(c.get(Calendar.YEAR));
+            
+            
+            String fecha = annio+"-"+mes+"-"+dia;
+            
             out.println("<form method=\"post\" action=\"SrvRegistrarProducto\">");
 
 
@@ -198,7 +214,7 @@ public class SrvFerreteria extends HttpServlet {
             out.println("<td><input type=\"text\" name=\"stock\""
                     + " value=></td>");
             out.println("<td><input type=\"text\" name=\"fecha_alta\""
-                    + " value=></td>");
+                    + " value='"+fecha+"'></td>");
             out.println("<td><input type=\"text\" name=\"imagen\""
                     + " value=></td>");
 

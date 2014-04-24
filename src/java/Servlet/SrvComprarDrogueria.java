@@ -137,6 +137,8 @@ public class SrvComprarDrogueria extends HttpServlet {
             int familia = 2; //Esta familia corresponde a la alimentación.
             ResultSet res = productos.ListarMDB(familia);
             
+
+            
             while (res.next()){
                 idProducto = res.getInt("idProducto");
                 idFamilia =  res.getInt("idFamilia");
@@ -148,6 +150,7 @@ public class SrvComprarDrogueria extends HttpServlet {
                 imagen = res.getString("imagen");
                 
                 out.println("<tr>");
+                out.println("<form method=\"post\" action=\"SrvRecogerDatos\">");
                 out.println("<td>"+ idProducto +"</td>");
                 out.println("<td>"+ idFamilia +"</td>");
                 out.println("<td>"+ nombre +"</td>");
@@ -157,6 +160,8 @@ public class SrvComprarDrogueria extends HttpServlet {
                 out.println("<td>"+ fecha_alta +"</td>");
                 out.println("<td>"+ imagen +"</td>");
                 out.println("<td><INPUT TYPE=\"NUMBER\" MIN=\"1\" MAX=\""+stock+"\" STEP=\"1\" VALUE=\"6\" SIZE=\"6\"></td>");
+                out.println("<td><input type=\"submit\" value=\"Añadir\"></td>");
+                out.println("</form>");
                 out.println("</tr>");      
                 
 

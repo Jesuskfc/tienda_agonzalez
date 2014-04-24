@@ -72,14 +72,15 @@ public class SrvRecogerDatos extends HttpServlet {
             
             int cantidad = Integer.parseInt(request.getParameter("cantidad"));
             int idProducto = Integer.parseInt(request.getParameter("idProducto"));
+            float precio = Float.parseFloat(request.getParameter("precio"));
             //int idProducto = 0;
             
             HttpSession sesion = request.getSession();
             sesion.setAttribute("cantidad", cantidad);
             sesion.setAttribute("idProducto", idProducto);
+            sesion.setAttribute("precio", precio);
             
-            
-            CantidadProducto producto = new CantidadProducto(idProducto,cantidad);
+            CantidadProducto producto = new CantidadProducto(idProducto,cantidad,precio);
             
             ArrayList<CantidadProducto> cesta = (ArrayList<CantidadProducto>) sesion.getAttribute("cesta");
             if (cesta == null){
@@ -103,6 +104,8 @@ public class SrvRecogerDatos extends HttpServlet {
                 cadena = cadena +p.getIdProducto();
                 cadena = cadena + " y esta es la cantidad :  ";
                 cadena = cadena +p.getCantidad();
+                cadena = cadena + " y este es el precio :  ";
+                cadena = cadena + (p.getPrecio()*p.getCantidad());
                 
             }
             
@@ -118,7 +121,7 @@ public class SrvRecogerDatos extends HttpServlet {
             out.println("<title>Servlet SrvRecogerDatos</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Se ha añadido producto: "+idProducto+ " cantidad : "+cantidad+" </h1>");
+            out.println("<h1>Se ha añadido producto: "+idProducto+ " cantidad : "+cantidad+" precio total : "+cantidad * precio+" </h1>");
             out.println("<form method=\"post\" action=\"SrvComprar\">");
             out.println("<td><input type=\"submit\" value=\"Atrás\"></td>");
             out.println("</form>");

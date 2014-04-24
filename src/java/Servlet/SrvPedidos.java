@@ -6,11 +6,12 @@
 
 package Servlet;
 
+import AccesoDatos.AccesoPedido;
+import AccesoDatos.AccesoProductos;
+import AccesoDatos.ActualizarPedido;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.ResultSet;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -21,8 +22,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author jesuskfc
  */
-@WebServlet(name = "SrvAdmin", urlPatterns = {"/SrvAdmin"})
-public class SrvAdmin extends HttpServlet {
+@WebServlet(name = "SrvPedidos", urlPatterns = {"/SrvPedidos"})
+public class SrvPedidos extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -67,6 +68,26 @@ public class SrvAdmin extends HttpServlet {
         processRequest(request, response);
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
+        
+        AccesoPedido pedido = new AccesoPedido();
+        
+        
+        int idPedido, entregado;
+        String nombre, descripcion;
+        String fecha_pedido, fecha_entrega;
+        
+        
+        
+        idPedido=0;
+        entregado=0;
+        nombre="";
+        descripcion="";
+        fecha_pedido="";
+        fecha_entrega="";
+        
+        
+      
+        
         try {
             
             
@@ -77,7 +98,8 @@ public class SrvAdmin extends HttpServlet {
             out.println("<title>SrvAdmin</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<p>Estas en la sección de administrador</p>");
+            out.println("<p>Estas comprando</p>");
+           
             out.println("<table>");
             out.println("<tr>");
             out.println("<form method=\"post\" action=\"SrvAlimentacion\">");
@@ -103,13 +125,78 @@ public class SrvAdmin extends HttpServlet {
             out.println("</tr>");
             out.println("</table>");
             
+            out.println("<table>");
+            
+            out.println("<tr>");
+            out.println("<td>idPedido</td>");
+            out.println("<td>nombre</td>");
+            out.println("<td>descripcion</td>");
+            out.println("<td>Fecha Pedido</td>");
+            out.println("<td>Fecha Entrega</td>");
+            out.println("<td>entregado</td>");
+            out.println("</tr>");
+            
+            
+            ResultSet res = pedido.ListarMDB();
+            
+            
+            while (res.next()){
+                idPedido = res.getInt("idPedido");
+                nombre = res.getString("nombre");
+                descripcion = res.getString("descripcion");
+                fecha_entrega = res.getString("fecha_entrega");
+                fecha_pedido = res.getString("fecha_pedido");
+                entregado = res.getInt("entregado");
+                
+                
+                out.println("<form method=\"post\" action=\"SrvActualizarPedido\">");
+                out.println("<tr>");
+                out.println("<form method=\"post\" action=\"SrvRecogerDatos\">");
+                out.println("<td>"+ idPedido +"</td>");
+                out.println("<td><input type=\"hidden\" name=\"idPedido\""+ " value=" + idPedido +"></td>");
+                out.println("<td>"+ nombre +"</td>");
+                out.println("<td><input type=\"hidden\" name=\"nombre\""+ " value=" + nombre +"></td>");
+                out.println("<td>"+ descripcion +"</td>");
+                out.println("<td><input type=\"hidden\" name=\"descripcion\""+ " value=" + descripcion+"></td>");
+                out.println("<td>"+ fecha_pedido+"</td>");
+                out.println("<td><input type=\"hidden\" name=\"fecha_pedido\""+ " value=" + fecha_pedido+"></td>");
+                
+                
+                if(fecha_entrega.equals("2000-12-12")){
+                    out.println("<td> Sin determinar </td>");
+                }else{
+                    out.println("<td>"+ fecha_entrega+"</td>");
+                }
+                
+                
+                if(entregado== 0){
+                    out.println("<td> No </td>");
+                }else{
+                    out.println("<td> Sí </td>");
+                }
+
+                out.println("<td><input type=\"submit\" value=\"Hacer Pedido\"></td>");
+                out.println("</form>");
+                out.println("</tr>");
+                
+                
+                
+
+            }
+            
+            
+            
+            out.println("</table>");
+            
+            
             out.println("<br>");
             out.println("<br>");
             out.println("<br>");
+
+            
             out.println("<form method=\"post\" action=\"index.jsp\">");
             out.println("<td><input type=\"submit\" value=\"Home\"></td>");
             out.println("</form>");
-            
             
             out.println("</body>");
             out.println("</html>");

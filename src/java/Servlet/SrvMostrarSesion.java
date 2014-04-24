@@ -24,10 +24,22 @@ import javax.servlet.http.HttpSession;
 public class SrvMostrarSesion extends HttpServlet {
 
     public String cadena;
-
+    public float preciototal;
+    
     public String getCadena() {
         return cadena;
     }
+
+    public float getPreciototal() {
+        return preciototal;
+    }
+
+    public void setPreciototal(float preciototal) {
+        this.preciototal = preciototal;
+    }
+    
+    
+    
 
     
     
@@ -91,18 +103,28 @@ public class SrvMostrarSesion extends HttpServlet {
             
             cadena = "";
             
+            preciototal = 0;
+            
+            float precioproducto=0;
+            
             for(CantidadProducto p: cesta){
                 
                 cadena = cadena + "El producto es :  ";
                 cadena = cadena +p.getIdProducto();
                 cadena = cadena + " y esta es la cantidad :  ";
                 cadena = cadena +p.getCantidad();
+                cadena = cadena + " y esta es el precio :  ";
+                precioproducto = p.getPrecio()*p.getCantidad();
+                cadena = cadena + precioproducto;
                 cadena = cadena + " . ";
+                
+                
+                preciototal = preciototal + precioproducto;
                 
             }
             
             
-            
+            cadena = cadena + " El precio total del pedido es : " + preciototal;
             
             
             
