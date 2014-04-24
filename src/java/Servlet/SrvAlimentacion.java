@@ -200,7 +200,7 @@ public class SrvAlimentacion extends HttpServlet {
             out.println("<td><input type=\"text\" name=\"idProducto\""
                     + " value=></td>");
             out.println("<td>1</td>");
-            out.println("<input type=\"hidden\" name=\"idProducto\" value='1'>");
+            out.println("<input type=\"hidden\" name=\"idFamilia\" value='1'>");
             out.println("<td><input type=\"text\" name=\"nombre\""
                     + " value=></td>");
             out.println("<td><input type=\"text\" name=\"descripcion\""

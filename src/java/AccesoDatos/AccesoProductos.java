@@ -40,11 +40,25 @@ public class AccesoProductos extends Conexion{
               
     }
     
-    public ResultSet Buscar(String user, String pw){
+    public ResultSet ListarPorPrecio(float preciomin, float preciomax){
 
      try{
             getStmt();//estado de la comunicacion
-            result= stmt.executeQuery("SELECT * FROM empleados WHERE (USUARIO LIKE'" + user+"') AND (PASSWORD LIKE'"+pw+"') ");//consulta a la bd
+            result= stmt.executeQuery("SELECT * FROM productos WHERE precio BETWEEN "+preciomin+" AND "+preciomax);//consulta a la bd
+            return result;//devuelve los resultados
+        }catch (SQLException ex){
+            System.err.println("Excepcion SQL: " +ex.getMessage());
+            return null;
+        }   
+    }
+    
+     public ResultSet ListarPorPrecio(float preciomin, float preciomax,int familia){
+
+     try{
+            getStmt();//estado de la comunicacion
+            result= stmt.executeQuery("SELECT * FROM productos WHERE (precio BETWEEN "+preciomin+" AND "+preciomax+") AND (idFamilia='"+familia+"')");//consulta a la bd
+           // WHERE (USUARIO LIKE'" + user+"') AND (PASSWORD LIKE'"+pw+"')
+            
             return result;//devuelve los resultados
         }catch (SQLException ex){
             System.err.println("Excepcion SQL: " +ex.getMessage());

@@ -69,8 +69,9 @@ public class SrvAdmin extends HttpServlet {
         PrintWriter out = response.getWriter();
         try {
             
-            
-            /* TODO output your page here. You may use following sample code. */
+            if(   request.getParameter("USUARIO").equalsIgnoreCase("paqui") &&  request.getParameter("PASSWORD").equalsIgnoreCase("paqui")    ){
+                
+                /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
@@ -113,6 +114,16 @@ public class SrvAdmin extends HttpServlet {
             
             out.println("</body>");
             out.println("</html>");
+            }else{
+                
+                out.println("Error en la validacion del usuario tolay");
+                out.println("<form method=\"post\" action=\"index.jsp\">");
+                out.println("<td><input type=\"submit\" value=\"Home\"></td>");
+                out.println("</form>");
+            }
+            
+            
+            
         } catch (Exception e) {
 //            Logger.getLogger(SrvEmpleados.class.getName()).log(Level.SEVERE, null, e);
         }

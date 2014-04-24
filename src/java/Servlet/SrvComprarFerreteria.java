@@ -117,6 +117,13 @@ public class SrvComprarFerreteria extends HttpServlet {
             out.println("<td><input type=\"submit\" value=\"Ferretería\"></td>");
             out.println("</form>");
             
+            out.println("<form method=\"post\" action=\"SrvComprarPorPrecio\">");
+            out.println("<input type=\"hidden\" name=\"idFamilia\" value='3'>");
+            out.println("<td><INPUT TYPE=\"NUMBER\" name='preciomin' MIN=\"0\" MAX='100000000' STEP=\"1\" VALUE=\"0\" SIZE=\"6\"></td>");
+            out.println("<td><INPUT TYPE=\"NUMBER\" name='preciomax' MIN=\"1\" MAX='100000000' STEP=\"1\" VALUE=\"1\" SIZE=\"6\"></td>");
+            out.println("<td><input type=\"submit\" value=\"Comprar por Precio (Alimentacion) \"></td>");
+            out.println("</form>");
+            
             out.println("</tr>");
             out.println("</table>");
             

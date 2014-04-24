@@ -78,8 +78,9 @@ public class SrvRegistrarProducto extends HttpServlet {
             int idFamilia= Integer.parseInt(request.getParameter("idFamilia"));
             String nombre= request.getParameter("nombre");
             String descripcion= request.getParameter("descripcion");
-            //float precio=(float)Integer.parseInt(request.getParameter("precio"));
-            float precio=1;
+            
+            float precio = Float.parseFloat(request.getParameter("precio"));
+            
             int stock = Integer.parseInt(request.getParameter("stock"));
             String fecha_alta = request.getParameter("fecha_alta");
             String imagen = request.getParameter("imagen");
@@ -96,16 +97,15 @@ public class SrvRegistrarProducto extends HttpServlet {
             //out.println("<form action = >");
             
                         
-            out.println("<p>Usuario añadido correctamente</p>");
             
-                producto.AgregarMDB(idProducto, idFamilia, nombre, descripcion, precio, stock, fecha_alta, imagen);
+            producto.AgregarMDB(idProducto, idFamilia, nombre, descripcion, precio, stock, fecha_alta, imagen);
             
             out.println("</body>");
             out.println("</html>");
             out.close();
             
         } catch (Exception e) {
-            //Logger.getLogger(SrvEmpleados.class.getName()).log(Level.SEVERE, null, e);
+            out.println("ser rompeeeeee");
         }
     }
 

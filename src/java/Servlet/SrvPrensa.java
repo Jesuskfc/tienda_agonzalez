@@ -205,7 +205,7 @@ public class SrvPrensa extends HttpServlet {
             out.println("<td><input type=\"text\" name=\"idProducto\""
                     + " value=></td>");
             out.println("<td>4</td>");
-            out.println("<input type=\"hidden\" name=\"idProducto\" value='4'>");
+            out.println("<input type=\"hidden\" name=\"idFamilia\" value='4'>");
             out.println("<td><input type=\"text\" name=\"nombre\""
                     + " value=></td>");
             out.println("<td><input type=\"text\" name=\"descripcion\""

@@ -10,7 +10,6 @@ import AccesoDatos.AccesoProductos;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.ResultSet;
-import java.util.Calendar;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -21,8 +20,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author jesuskfc
  */
-@WebServlet(name = "SrvFerreteria", urlPatterns = {"/SrvFerreteria"})
-public class SrvFerreteria extends HttpServlet {
+@WebServlet(name = "SrvComprarPorPrecio", urlPatterns = {"/SrvComprarPorPrecio"})
+public class SrvComprarPorPrecio extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -50,7 +49,7 @@ public class SrvFerreteria extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-       
+        processRequest(request, response);
     }
 
     /**
@@ -97,29 +96,27 @@ public class SrvFerreteria extends HttpServlet {
             out.println("<title>SrvAdmin</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<p>Estas en la sección de administrador</p>");
+            out.println("<p>Estas comprando</p>");
+           
             out.println("<table>");
             out.println("<tr>");
-            out.println("<form method=\"post\" action=\"SrvAlimentacion\">");
+            out.println("<form method=\"post\" action=\"SrvComprarAlimentacion\">");
             out.println("<td><input type=\"submit\" value=\"Alimentación\"></td>");
             out.println("</form>");
             
-            out.println("<form method=\"post\" action=\"SrvDrogueria\">");
+            out.println("<form method=\"post\" action=\"SrvComprarDrogueria\">");
             out.println("<td><input type=\"submit\" value=\"Droguería\"></td>");
             out.println("</form>");
             
-            out.println("<form method=\"post\" action=\"SrvPrensa\">");
+            out.println("<form method=\"post\" action=\"SrvComprarPrensa\">");
             out.println("<td><input type=\"submit\" value=\"Prensa\"></td>");
             out.println("</form>");
             
-            out.println("<form method=\"post\" action=\"SrvFerreteria\">");
+            out.println("<form method=\"post\" action=\"SrvComprarFerreteria\">");
             out.println("<td><input type=\"submit\" value=\"Ferretería\"></td>");
             out.println("</form>");
             
             
-            out.println("<form method=\"post\" action=\"SrvPedidos\">");
-            out.println("<td><input type=\"submit\" value=\"Pedidos\"></td>");
-            out.println("</form>");
             
             out.println("</tr>");
             out.println("</table>");
@@ -138,8 +135,23 @@ public class SrvFerreteria extends HttpServlet {
             out.println("</tr>");
             
             
-            int familia = 3; //Esta familia corresponde a la alimentación.
-            ResultSet res = productos.ListarMDB(familia);
+            
+            int familia = Integer.parseInt(request.getParameter("idFamilia"));
+            
+            float preciomin = Float.parseFloat(request.getParameter("preciomin"));
+            float preciomax = Float.parseFloat(request.getParameter("preciomax"));
+            
+       
+           
+            
+            ResultSet res;
+            
+            if(familia==5){
+                res = productos.ListarPorPrecio(preciomin, preciomax);
+            }else{
+                res = productos.ListarPorPrecio(preciomin, preciomax,familia);
+            }
+            
             
             while (res.next()){
                 idProducto = res.getInt("idProducto");
@@ -151,86 +163,46 @@ public class SrvFerreteria extends HttpServlet {
                 fecha_alta = res.getString("fecha_alta");
                 imagen = res.getString("imagen");
                 
-                
-                out.println("<form method=\"post\" action=\"SrvActualizarProducto\">");
-
-
-                out.println("<td><input type=\"text\" name=\"idProducto\""
-                        + " value=" + idProducto +"></td>");
-                out.println("<td><input type=\"text\" name=\"idFamilia\""
-                        + " value=" + idFamilia+"></td>");
-                out.println("<td><input type=\"text\" name=\"nombre\""
-                        + " value=" + nombre +"></td>");
-                out.println("<td><input type=\"text\" name=\"descripcion\""
-                        + " value=" + descripcion+"></td>");
-                out.println("<td><input type=\"text\" name=\"precio\""
-                        + " value=" + precio +"></td>");
-                out.println("<td><input type=\"text\" name=\"stock\""
-                        + " value=" + stock +"></td>");
-                out.println("<td><input type=\"text\" name=\"fecha_alta\""
-                        + " value=" + fecha_alta +"></td>");
-                out.println("<td><input type=\"text\" name=\"imagen\""
-                        + " value=" + imagen +"></td>");
-                
-                out.println("<td><input type=\"submit\" value=\"Actualizar\"></td>");
-
+                out.println("<tr>");
+                out.println("<form method=\"post\" action=\"SrvRecogerDatos\">");
+                out.println("<td>"+ idProducto +"</td>");
+                out.println("<td>"+ idFamilia +"</td>");
+                out.println("<td>"+ nombre +"</td>");
+                out.println("<td>"+ descripcion +"</td>");
+                out.println("<td>"+ precio+"</td>");
+                out.println("<td>"+ stock +"</td>");
+                out.println("<td>"+ fecha_alta +"</td>");
+                out.println("<td>"+ imagen +"</td>");
+                out.println("<td><INPUT TYPE=\"NUMBER\" MIN=\"1\" MAX=\""+stock+"\" STEP=\"1\" VALUE=\"6\" SIZE=\"6\"></td>");
+                out.println("<td><input type=\"submit\" value=\"Añadir\"></td>");
                 out.println("</form>");
+                out.println("</tr>");      
                 
-                out.println("<form method=\"post\" action=\"SrvEliminarProducto\">");
-                out.println("<td><input type=\"hidden\" name=\"idProducto\""
-                        + " value=" + idProducto+"></td>");
-                out.println("<td><input type=\"submit\" value=\"Eliminar\"></td>");
-                out.println("</form>");
-                
-                
-                
-                out.println("</tr>");
 
             }
             
             
-            Calendar c = Calendar.getInstance();
-            
-            String dia = Integer.toString(c.get(Calendar.DATE));
-            String mes = Integer.toString(c.get(Calendar.MONTH));
-            String annio = Integer.toString(c.get(Calendar.YEAR));
-            
-            
-            String fecha = annio+"-"+mes+"-"+dia;
-            
-            out.println("<form method=\"post\" action=\"SrvRegistrarProducto\">");
-
-
-            out.println("<td><input type=\"text\" name=\"idProducto\""
-                    + " value=></td>");
-            out.println("<td>3</td>");
-            out.println("<input type=\"hidden\" name=\"idFamilia\" value='3'>");
-            out.println("<td><input type=\"text\" name=\"nombre\""
-                    + " value=></td>");
-            out.println("<td><input type=\"text\" name=\"descripcion\""
-                    + " value=></td>");
-            out.println("<td><input type=\"text\" name=\"precio\""
-                    + " value=></td>");
-            out.println("<td><input type=\"text\" name=\"stock\""
-                    + " value=></td>");
-            out.println("<td><input type=\"text\" name=\"fecha_alta\""
-                    + " value='"+fecha+"'></td>");
-            out.println("<td><input type=\"text\" name=\"imagen\""
-                    + " value=></td>");
-
-            out.println("<td><input type=\"submit\" value=\"Añadir\"></td>");
-
-            out.println("</form>");
             
             out.println("</table>");
             
             out.println("<br>");
             out.println("<br>");
             out.println("<br>");
+            
+            out.println("<form method=\"post\" action=\"SrvMostrarSesion\">");
+            out.println("<td><input type=\"submit\" value=\"Ver Cesta\"></td>");
+            out.println("</form>");
+            
+            
+            
+            out.println("<br>");
+            out.println("<br>");
+            out.println("<br>");
+
+            
             out.println("<form method=\"post\" action=\"index.jsp\">");
             out.println("<td><input type=\"submit\" value=\"Home\"></td>");
             out.println("</form>");
-            
             
             out.println("</body>");
             out.println("</html>");
