@@ -4,9 +4,11 @@
  */
 package Servlet;
 
+import AccesoDatos.ActualizarProducto;
 import Productos.CantidadProducto;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.ResultSet;
 import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -75,6 +77,15 @@ public class SrvRecogerDatos extends HttpServlet {
             float precio = Float.parseFloat(request.getParameter("precio"));
             //int idProducto = 0;
             
+            ResultSet res;                                  
+            int idFamilia= Integer.parseInt(request.getParameter("idFamilia"));
+            String nombre= request.getParameter("nombre");
+            String descripcion= request.getParameter("descripcion");
+            int stock = Integer.parseInt(request.getParameter("stock"));
+            String fecha_alta = request.getParameter("fecha_alta");
+            String imagen = request.getParameter("imagen");
+            
+            
             HttpSession sesion = request.getSession();
             sesion.setAttribute("cantidad", cantidad);
             sesion.setAttribute("idProducto", idProducto);
@@ -110,10 +121,15 @@ public class SrvRecogerDatos extends HttpServlet {
             }
             
             
-           // int precio = Integer.parseInt(request.getParameter("precio"));
             
-            //sesion.setAttribute("precio", precio);
-            //sesion.setAttribute("idProducto", idProducto);
+            
+            
+            ActualizarProducto productos = new ActualizarProducto();
+
+            productos.ActualizarMDB(idProducto,idFamilia,  nombre,  descripcion,  precio,  stock-cantidad,  fecha_alta, imagen);
+            
+            
+           
             
             out.println("<!DOCTYPE html>");
             out.println("<html>");
@@ -127,8 +143,8 @@ public class SrvRecogerDatos extends HttpServlet {
             out.println("</form>");
             out.println("</body>");
             out.println("</html>");
-        } finally {            
-            out.close();
+        } catch (Exception ex) {            
+            
         }
     }
 

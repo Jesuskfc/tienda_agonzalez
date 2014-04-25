@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -116,7 +117,7 @@ public class SrvMostrarSesion extends HttpServlet {
                 cadena = cadena + " y esta es el precio :  ";
                 precioproducto = p.getPrecio()*p.getCantidad();
                 cadena = cadena + precioproducto;
-                cadena = cadena + " . ";
+                cadena = cadena + "<br>";
                 
                 
                 preciototal = preciototal + precioproducto;
@@ -136,7 +137,10 @@ public class SrvMostrarSesion extends HttpServlet {
             out.println("<title>Servlet SrvMostrarSesion</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1> " + cadena + " </h1>");
+            out.println(cadena);
+            out.println("<br>");
+            out.println("<br>");
+            out.println("<br>");
             out.println("<form method=\"post\" action=\"SrvComprar\">");
             out.println("<td><input type=\"submit\" value=\"Atrás\"></td>");
             out.println("</form>");
@@ -155,6 +159,11 @@ public class SrvMostrarSesion extends HttpServlet {
             
             out.println("</body>");
             out.println("</html>");
+            
+            
+            
+            
+            
         } catch(Exception ex) {            
             out.println("<h1>La cesta esta vacia</h1>");
         }

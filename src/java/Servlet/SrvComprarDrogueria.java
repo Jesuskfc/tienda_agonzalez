@@ -159,17 +159,25 @@ public class SrvComprarDrogueria extends HttpServlet {
                 out.println("<tr>");
                 out.println("<form method=\"post\" action=\"SrvRecogerDatos\">");
                 out.println("<td>"+ idProducto +"</td>");
+                out.println("<input type=\"hidden\" name=\"idProducto\" value=\""+idProducto+"\">");
+                out.println("<input type=\"hidden\" name=\"idFamilia\" value=\""+idFamilia+"\">");
+                out.println("<input type=\"hidden\" name=\"nombre\" value=\""+nombre+"\">");
+                out.println("<input type=\"hidden\" name=\"descripcion\" value=\""+descripcion+"\">");
+                out.println("<input type=\"hidden\" name=\"precio\" value=\""+precio+"\">");
+                out.println("<input type=\"hidden\" name=\"stock\" value=\""+stock+"\">");
+                out.println("<input type=\"hidden\" name=\"fecha_alta\" value=\""+fecha_alta+"\">");
+                out.println("<input type=\"hidden\" name=\"imagen\" value=\""+imagen+"\">");
                 out.println("<td>"+ idFamilia +"</td>");
                 out.println("<td>"+ nombre +"</td>");
                 out.println("<td>"+ descripcion +"</td>");
                 out.println("<td>"+ precio+"</td>");
                 out.println("<td>"+ stock +"</td>");
                 out.println("<td>"+ fecha_alta +"</td>");
-                out.println("<td>"+ imagen +"</td>");
-                out.println("<td><INPUT TYPE=\"NUMBER\" MIN=\"1\" MAX=\""+stock+"\" STEP=\"1\" VALUE=\"6\" SIZE=\"6\"></td>");
+                out.println("<td><img src='"+imagen+"' width='50' height='50'></td>");
+                out.println("<td><INPUT name=\"cantidad\" TYPE=\"NUMBER\" MIN=\"1\" MAX=\""+stock+"\" STEP=\"1\" VALUE=\"6\" SIZE=\"6\"></td>");
                 out.println("<td><input type=\"submit\" value=\"Añadir\"></td>");
                 out.println("</form>");
-                out.println("</tr>");      
+                out.println("</tr>");    
                 
 
             }

@@ -12,6 +12,5 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <%int i = 0;%>
     </body>
 </html>

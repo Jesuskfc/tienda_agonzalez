@@ -116,7 +116,8 @@ public class SrvAdmin extends HttpServlet {
             out.println("</html>");
             }else{
                 
-                out.println("Error en la validacion del usuario tolay");
+                out.println("Error en la validacion del usuario");
+                out.println("<br>");
                 out.println("<form method=\"post\" action=\"index.jsp\">");
                 out.println("<td><input type=\"submit\" value=\"Home\"></td>");
                 out.println("</form>");
