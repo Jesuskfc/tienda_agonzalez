@@ -182,7 +182,7 @@ public class SrvComprarPorPrecio extends HttpServlet {
                 out.println("<td>"+ stock +"</td>");
                 out.println("<td>"+ fecha_alta +"</td>");
                 out.println("<td><img src='"+imagen+"' width='50' height='50'></td>");
-                out.println("<td><INPUT TYPE=\"NUMBER\" MIN=\"1\" MAX=\""+stock+"\" STEP=\"1\" VALUE=\"1\" SIZE=\"6\"></td>");
+                out.println("<td><INPUT name=\"cantidad\" TYPE=\"NUMBER\" MIN=\"1\" MAX=\""+stock+"\" STEP=\"1\" VALUE=\"1\" SIZE=\"6\"></td>");
                 out.println("<td><input type=\"submit\" value=\"Añadir\"></td>");
                 out.println("</form>");
                 out.println("</tr>");      
