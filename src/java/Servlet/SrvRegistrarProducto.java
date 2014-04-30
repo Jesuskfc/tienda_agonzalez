@@ -86,6 +86,7 @@ public class SrvRegistrarProducto extends HttpServlet {
             String imagen = request.getParameter("imagen");
             ResultSet res;
             out.println("<head>");
+            out.println("<link href=\"fondo.css\" rel=\"stylesheet\" type=\"text/css\">");
             out.println("<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">");
             out.println("<title>Acceso</title>");
             out.println("<h1>PRODUCTO AÑADIDO</h1>");

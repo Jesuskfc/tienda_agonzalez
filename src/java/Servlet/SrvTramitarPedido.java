@@ -123,6 +123,7 @@ public class SrvTramitarPedido extends HttpServlet {
             
             
             out.println("<head>");
+            out.println("<link href=\"fondo.css\" rel=\"stylesheet\" type=\"text/css\">");
             out.println("<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">");
             out.println("<title>Acceso</title>");
             

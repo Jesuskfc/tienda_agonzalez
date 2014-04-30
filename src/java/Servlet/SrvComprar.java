@@ -74,6 +74,7 @@ public class SrvComprar extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
+            out.println("<link href=\"fondo.css\" rel=\"stylesheet\" type=\"text/css\">");
             out.println("<title>SrvAdmin</title>");            
             out.println("</head>");
             out.println("<body>");

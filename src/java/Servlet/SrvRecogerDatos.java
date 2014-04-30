@@ -134,10 +134,11 @@ public class SrvRecogerDatos extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
+            out.println("<link href=\"fondo.css\" rel=\"stylesheet\" type=\"text/css\">");
             out.println("<title>Servlet SrvRecogerDatos</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Se ha añadido producto: "+idProducto+ " cantidad : "+cantidad+" precio total : "+cantidad * precio+" </h1>");
+            out.println("<h1>Se ha añadido producto: "+nombre+" (ID: "+ idProducto +") cantidad : "+cantidad+" precio total : "+cantidad * precio+" </h1>");
             out.println("<form method=\"post\" action=\"SrvComprar\">");
             out.println("<td><input type=\"submit\" value=\"Atrás\"></td>");
             out.println("</form>");
@@ -147,7 +148,7 @@ public class SrvRecogerDatos extends HttpServlet {
             
         }
     }
-
+    
     /**
      * Returns a short description of the servlet.
      *

@@ -134,6 +134,7 @@ public class SrvMostrarSesion extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
+            out.println("<link href=\"fondo.css\" rel=\"stylesheet\" type=\"text/css\">");
             out.println("<title>Servlet SrvMostrarSesion</title>");            
             out.println("</head>");
             out.println("<body>");
@@ -164,7 +165,8 @@ public class SrvMostrarSesion extends HttpServlet {
             
             
             
-        } catch(Exception ex) {            
+        } catch(Exception ex) {    
+            out.println("<link href=\"fondo.css\" rel=\"stylesheet\" type=\"text/css\">");
             out.println("<h1>La cesta esta vacia</h1>");
         }
     }

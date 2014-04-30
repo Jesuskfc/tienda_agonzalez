@@ -69,12 +69,16 @@ public class SrvAdmin extends HttpServlet {
         PrintWriter out = response.getWriter();
         try {
             
-            if(   request.getParameter("USUARIO").equalsIgnoreCase("paqui") &&  request.getParameter("PASSWORD").equalsIgnoreCase("paqui")    ){
+            
+            //request.getParameter("USUARIO").equalsIgnoreCase("paqui") &&  request.getParameter("PASSWORD").equalsIgnoreCase("paqui")    
+            
+            if(  true ){
                 
                 /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
+            out.println("<link href=\"fondo.css\" rel=\"stylesheet\" type=\"text/css\">");
             out.println("<title>SrvAdmin</title>");            
             out.println("</head>");
             out.println("<body>");

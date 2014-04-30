@@ -94,6 +94,7 @@ public class SrvComprarDrogueria extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
+            out.println("<link href=\"fondo.css\" rel=\"stylesheet\" type=\"text/css\">");
             out.println("<title>SrvAdmin</title>");            
             out.println("</head>");
             out.println("<body>");
@@ -174,7 +175,7 @@ public class SrvComprarDrogueria extends HttpServlet {
                 out.println("<td>"+ stock +"</td>");
                 out.println("<td>"+ fecha_alta +"</td>");
                 out.println("<td><img src='"+imagen+"' width='50' height='50'></td>");
-                out.println("<td><INPUT name=\"cantidad\" TYPE=\"NUMBER\" MIN=\"1\" MAX=\""+stock+"\" STEP=\"1\" VALUE=\"6\" SIZE=\"6\"></td>");
+                out.println("<td><INPUT name=\"cantidad\" TYPE=\"NUMBER\" MIN=\"1\" MAX=\""+stock+"\" STEP=\"1\" VALUE=\"1\" SIZE=\"6\"></td>");
                 out.println("<td><input type=\"submit\" value=\"Añadir\"></td>");
                 out.println("</form>");
                 out.println("</tr>");    

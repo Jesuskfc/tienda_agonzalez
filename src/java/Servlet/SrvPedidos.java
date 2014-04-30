@@ -95,10 +95,11 @@ public class SrvPedidos extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
+            out.println("<link href=\"fondo.css\" rel=\"stylesheet\" type=\"text/css\">");
             out.println("<title>SrvAdmin</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<p>Estas comprando</p>");
+            out.println("<p>Estas en la sección de administrador</p>");
            
             out.println("<table>");
             out.println("<tr>");
@@ -157,7 +158,7 @@ public class SrvPedidos extends HttpServlet {
                 out.println("<td>"+ nombre +"</td>");
                 out.println("<td><input type=\"hidden\" name=\"nombre\""+ " value=" + nombre +"></td>");
                 out.println("<td>"+ descripcion +"</td>");
-                out.println("<td><input type=\"hidden\" name=\"descripcion\""+ " value=" + descripcion+"></td>");
+                out.println("<td><input type=\"hidden\" name=\"descripcion\""+ " value='Pedido realizado'></td>");
                 out.println("<td>"+ fecha_pedido+"</td>");
                 out.println("<td><input type=\"hidden\" name=\"fecha_pedido\""+ " value=" + fecha_pedido+"></td>");
                 
